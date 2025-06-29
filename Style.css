@@ -197,3 +197,78 @@ footer {
     flex-wrap: wrap; 
     justify-content: center;
 }
+
+/* ========================================================= */
+/* --- Responsive Design (Mobile View) --- */
+/* ========================================================= */
+@media (max-width: 768px) {
+    
+    
+    header, footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    
+    nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+   
+    .main-title {
+        font-size: 3.5rem;
+    }
+    
+    
+    .character-card {
+        width: 90%; 
+        max-width: 350px; 
+    }
+
+  
+    .detail-content {
+        padding: 20px; 
+    }
+
+    .detail-content .char-name {
+        font-size: 2.2rem;
+    }
+    
+    .detail-main-content {
+        flex-direction: column; 
+        text-align: center;
+        gap: 20px;
+    }
+
+    .detail-main-content .char-img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .detail-main-content .char-title {
+        text-align: center; 
+        font-size: 2rem;
+    }
+
+    
+    .detail-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    
+    #story-details h2 {
+        font-size: 2rem;
+    }
+
+    #story-details p {
+        font-size: 15px;
+    }
+}
