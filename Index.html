@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hogwarts Characters</title>
+    <link rel="stylesheet" href="Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Video Background HTML-->
+    <div class="video-background">
+        <video autoplay muted loop id="bg-video">
+            <source src="Untitled design.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+
+    <!--Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#" class="active-nav">Characters</a></li>
+                <li><a href="#">Movies</a></li>
+                <li><a href="#">Hogwarts</a></li>
+                <li><a href="#">Games</a></li>
+            </ul>
+            <div class="user-actions">
+                <a href="#">Log in</a>
+                <a href="#" class="signup-btn">Sign up</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- main content -->
+    <main>
+        <h1 class="main-title">Characters</h1>
+
+        <!-- House Filter -->
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="Gryffindor"><img src="https://static.wikia.nocookie.net/harrypotter/images/b/b1/Gryffindor_ClearBG.png" alt="Gryffindor"> Gryffindor</button>
+            <button class="filter-btn" data-filter="Slytherin"><img src="https://static.wikia.nocookie.net/harrypotter/images/0/00/Slytherin_ClearBG.png" alt="Slytherin"> Slytherin</button>
+            <button class="filter-btn" data-filter="Ravenclaw"><img src="https://static.wikia.nocookie.net/harrypotter/images/7/71/Ravenclaw_ClearBG.png" alt="Ravenclaw"> Ravenclaw</button>
+            <button class="filter-btn" data-filter="Hufflepuff"><img src="https://static.wikia.nocookie.net/harrypotter/images/0/06/Hufflepuff_ClearBG.png" alt="Hufflepuff"> Hufflepuff</button>
+        </div>
+
+        <!-- Character Card-->
+        <div class="character-grid">
+            
+        </div>
+    </main>
+
+    <!-- Character Detail Box (Modal) hide-->
+    <div id="character-detail-view" class="modal-overlay hidden">
+        <div class="detail-content">
+            
+        </div>
+    </div>
+    
+    <!-- "More"Box (Modal) -->
+    <div id="full-story-modal" class="modal-overlay hidden">
+        <div class="full-story-content">
+            <button class="close-story-btn">×</button>
+            <div id="story-details">
+            </div>
+        </div>
+    </div>
+
+    <!-- Magic Wand Animation-->
+    <div id="magic-animation-overlay" class="hidden">
+        <div class="magic-wand">🪄</div>
+    </div>
+
+
+<!--Footer -->
+    <footer>
+
+        <!-- Disclaimer-->
+        <div class="disclaimer">
+            <p>Disclaimer: This is a non-commercial fan project created for educational and demonstration purposes only. All characters, names, and related indicia are trademarks of and © Warner Bros. Entertainment Inc., J.K. Rowling, and their respective owners.</p>
+        </div>
+
+        <span>© 2025 Stella. All rights reserved.</span>
+    </footer>
+
+    <!-- JavaScript-->
+    <script src="Script.js"></script>
+</body>
+</html>
