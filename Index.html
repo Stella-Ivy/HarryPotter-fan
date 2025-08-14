@@ -1,97 +1,511 @@
 <!DOCTYPE html>
-<html lang="my">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="Alb5ucHKkb1wJzUDwmHHY-hbzCLQlvtCDouj1uqXpi4" />
-    <title>Hogwarts Characters</title>
-    <link rel="stylesheet" href="Style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
-    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Happy Birthday Ko Leon!</title>
+
+<!-- Fancy Web Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&family=Baloo+2:wght@700&family=Poppins:wght@300;500;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg1:#071c36;
+    --bg2:#0a2e5c;
+    --neon:#5ec8ff;
+    --neon-2:#8ad7ff;
+    --pink:#ff74b7;
+    --gold:#ffd166;
+    --lime:#b8ff6a;
+    --purp:#ae88ff;
+  }
+
+  /* Reset + base */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    color:#eaf6ff;
+    background: radial-gradient(1200px 700px at 70% 20%, rgba(30,150,255,.15), transparent 60%),
+                radial-gradient(900px 600px at 10% 80%, rgba(100,50,255,.15), transparent 60%),
+                linear-gradient(135deg, var(--bg1), var(--bg2));
+    overflow-x:hidden;
+    font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial;
+  }
+
+  /* Blue light beams (swaying while effect) */
+  .beams{
+    position:fixed; inset:0; pointer-events:none; overflow:hidden;
+    filter: blur(8px) saturate(120%);
+    opacity:.55;
+    mix-blend-mode: screen;
+    z-index:0;
+  }
+  .beam{
+    position:absolute; width:50vw; height:140vh;
+    background: linear-gradient(90deg, rgba(0,180,255,.0), rgba(0,180,255,.35), rgba(0,180,255,.0));
+    transform-origin:left top;
+    animation: sway 18s ease-in-out infinite;
+  }
+  .beam:nth-child(2){left:-10vw; top:-10vh; transform:rotate(18deg); animation-duration:24s; opacity:.65}
+  .beam:nth-child(3){left:30vw; top:-15vh; transform:rotate(-12deg); animation-duration:21s; opacity:.5}
+  .beam:nth-child(4){left:60vw; top:-20vh; transform:rotate(8deg); animation-duration:26s; opacity:.6}
+  @keyframes sway{
+    0%,100%{transform:rotate(-6deg)}
+    50%{transform:rotate(6deg)}
+  }
+
+  /* Top bar cake back key */
+  .topbar{
+    position:fixed; top:14px; left:14px; right:14px; z-index:40;
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+  }
+  .back-btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:10px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.25);
+    background:rgba(255,255,255,.06); backdrop-filter: blur(6px);
+    cursor:pointer; user-select:none; text-decoration:none; color:#fff;
+    box-shadow: 0 8px 22px rgba(0,0,0,.25), 0 0 24px rgba(255,150,200,.2) inset;
+    transition: transform .15s ease, box-shadow .2s ease;
+    font-weight:700;
+  }
+  .back-btn:hover{ transform: translateY(-2px) scale(1.02) }
+  .back-btn .cake{ font-size:20px; filter: drop-shadow(0 0 6px rgba(255,200,230,.8)); }
+  .brand{
+    margin-left:auto;
+    padding:8px 12px; border-radius:12px;
+    background:linear-gradient(90deg, rgba(94,200,255,.2), rgba(174,136,255,.2));
+    border:1px solid rgba(255,255,255,.25);
+    font-size:12px;
+  }
+
+  /* Layout container */
+  .wrap{
+    position:relative;
+    min-height:100dvh;
+    padding:96px 20px 40px;
+    display:flex; flex-direction:column; align-items:center; gap:18px;
+    z-index:2;
+  }
+
+  /* Neon Heading */
+  .heading{
+    text-align:center;
+    font-family:'Great Vibes', cursive;
+    font-size: clamp(42px, 6vw, 96px);
+    line-height:1.05;
+    margin:8px 0 0;
+    color: #eaf1f4;
+    text-shadow:
+      0 0 3px rgba(175, 15, 132, 0.9),
+      0 0 14px rgba(65, 8, 54, 0.8),
+      0 0 32px rgba(255, 50, 234, 0.55),
+      0 0 64px rgba(255, 10, 202, 0.45);
+    letter-spacing:.5px;
+    animation: floaty 6s ease-in-out infinite;
+  }
+  .heading .spark{
+    display:inline-block;
+    animation: twinkle 1.8s ease-in-out infinite;
+  }
+  @keyframes floaty { 0%,100%{ transform:translateY(0)} 50%{ transform:translateY(-6px)} }
+  @keyframes twinkle { 0%,100%{ opacity:1; filter:drop-shadow(0 0 10px var(--neon-2)) } 50%{ opacity:.6; filter:drop-shadow(0 0 2px var(--neon)) } }
+
+  /* Subheading tag line */
+  .sub{
+    font-family:'Pacifico', cursive;
+    font-size: clamp(18px, 2.2vw, 28px);
+    color:#b1daf1;
+    text-shadow: 0 0 10px rgba(28, 88, 118, 0.6);
+    margin-top:4px;
+  }
+
+  /* Clickable Gift box trigger */
+  .gift{
+    margin-top:10px;
+    width:124px; height:124px; position:relative; cursor:pointer;
+    transform: translateZ(0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .gift .lid, .gift .box{
+    position:absolute; left:0; right:0; margin:auto; width:100%; height:100%;
+    border-radius:18px; box-shadow: 0 16px 30px rgba(0,0,0,.35);
+  }
+  .gift .box{
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02)) padding-box,
+      linear-gradient(90deg, #ff9ad1, #8ad7ff) border-box;
+    border:2px solid transparent;
+  }
+  .gift .lid{
+    height:46%; top:-8%;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.05)) padding-box,
+      linear-gradient(90deg, #ffd166, #ae88ff) border-box;
+    border:2px solid transparent;
+    transform-origin:bottom center;
+    transition: transform .35s ease, filter .35s ease;
+  }
+  .gift .ribbon{
+    position:absolute; inset:0;
+    background: repeating-linear-gradient(90deg, rgba(255,255,255,.22) 0 8px, rgba(255,255,255,0) 8px 20px);
+    mix-blend-mode: screen; border-radius:18px;
+  }
+  .gift:active .lid{ transform: rotateX(22deg) translateY(-4px); filter:brightness(1.2) }
+
+  /* "Click Me" Text on Gift Box */
+  .gift-text {
+    position: absolute;
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(16px, 2.5vw, 22px);
+    color: var(--gold);
+    text-shadow: 0 2px 8px rgba(0,0,0,.5);
+    pointer-events: none;
+    animation: pulse 2s infinite ease-in-out;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: .9; }
+    50% { transform: scale(1.05); opacity: 1; }
+  }
+
+
+  /* Wishes card */
+  .card{
+    margin-top:14px;
+    max-width:1000px; width:min(92vw, 980px);
+    padding:22px 20px 26px;
+    background: rgba(10,25,55,.45);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:26px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.35), inset 0 0 60px rgba(94,200,255,.08);
+    backdrop-filter: blur(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  /* Typing effect styles for lines */
+  .line{
+    margin:12px auto; text-align:center;
+    min-height: 1.2em; 
+    opacity: 0; 
+  }
+  .line.typing::after {
+    content: '▋';
+    display: inline-block;
+    animation: blink 0.7s step-end infinite;
+    color: var(--neon);
+    margin-left: 4px;
+  }
+  @keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Different fancy fonts per line */
+  .f1{ font-family:'Playfair Display', serif; font-style:italic; font-size: clamp(18px,2.1vw,26px); color:#fff; text-shadow:0 0 16px rgba(142, 217, 240, 0.25)}
+  .f2{ font-family:'Baloo 2', cursive; font-size: clamp(18px,2.1vw,26px); color:#ffe9a8; text-shadow:0 0 16px rgba(255,209,102,.35)}
+  .f3{ font-family:'Pacifico', cursive; font-size: clamp(18px,2.1vw,26px); color:#ffb1d9; text-shadow:0 0 16px rgba(255,116,183,.35)}
+  .f5{ font-family:'Great Vibes', cursive; font-size: clamp(24px,2.8vw,36px); color: var(--gold); text-shadow:0 0 18px rgba(255, 209, 102, .45)}
+
+  /* Floating balloons & cakes */
+  .floaters{ position:fixed; inset:0; pointer-events:none; z-index:2; }
+  .floater{
+    position:absolute; bottom:-10vh; font-size: clamp(18px, 3.2vw, 42px);
+    animation: rise var(--dur,26s) linear infinite;
+    filter: drop-shadow(0 10px 8px rgba(0,0,0,.35)) drop-shadow(0 0 6px rgba(255,255,255,.25));
+  }
+  @keyframes rise{
+    0%{ transform: translateY(0) translateX(0) rotate(0deg); opacity:.0 }
+    10%{ opacity:1 }
+    90%{ opacity:1 }
+    100%{ transform: translateY(-120vh) translateX(var(--sx,40px)) rotate(360deg); opacity:0 }
+  }
+
+  /* Particle canvas */
+  canvas#fx{ position:fixed; inset:0; z-index:1; pointer-events:none; }
+
+  /* Burst texts */
+  .burst{
+    position:fixed; left:0; top:0; will-change: transform, opacity; z-index:5;
+    font-family:'Baloo 2', cursive; font-weight:700;
+    text-shadow: 0 0 10px rgba(255,255,255,.35);
+    pointer-events:none;
+  }
+
+  /* Footer hint */
+  .hint{
+    margin-top:24px; font-size:13px; opacity:.75; text-align:center;
+    transition: opacity 0.5s ease;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    .beam,.floater,.heading,.line,.gift-text{ animation: none !important }
+  }
+</style>
 </head>
 <body>
+  <!-- Blue light beams -->
+  <div class="beams" aria-hidden="true">
+    <div class="beam" style="left:-20vw; top:-15vh"></div>
+    <div class="beam"></div>
+    <div class="beam"></div>
+    <div class="beam"></div>
+  </div>
 
-    <!-- Video Background HTML-->
-    <div class="video-background">
-        <video autoplay muted loop id="bg-video">
-            <source src="Harry vd.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+  <!-- Top bar with cake back key -->
+  <div class="topbar">
+    <button class="back-btn" id="backBtn" title="Go Back">
+      <span class="cake">🍰</span>
+      <span>Stella</span>
+    </button>
+    <span class="brand">Birthday Mode✨</span>
+  </div>
+
+  <audio id="celebrationSound" src="0814.MP3" preload="auto"></audio>
+
+  <div class="wrap">
+    <h1 class="heading">
+      <span class="spark">✨</span>
+      Happy Birthday Ko Leon! 🥳 🎂
+      <span class="spark">✨</span>
+    </h1>
+    <div class="sub">A sky full of wishes for you 💙🌈</div>
+
+    <!-- Clickable Gift Box Trigger -->
+    <div class="gift" id="gift">
+      <div class="box"></div>
+      <div class="ribbon"></div>
+      <div class="lid"></div>
+      <div class="gift-text">Click Me!</div>
     </div>
 
-
-    <!--Navigation Bar -->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#" class="active-nav">Characters</a></li>
-                <li><a href="#">Movies</a></li>
-                <li><a href="#">Hogwarts</a></li>
-                <li><a href="#">Games</a></li>
-            </ul>
-            <div class="user-actions">
-                <a href="#">Log in</a>
-                <a href="#" class="signup-btn">Sign up</a>
-            </div>
-        </nav>
-    </header>
-
-    <!-- main content -->
-    <main>
-        <h1 class="main-title">Characters</h1>
-
-        <!-- House Filter -->
-        <div class="filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="Gryffindor"><img src="https://static.wikia.nocookie.net/harrypotter/images/b/b1/Gryffindor_ClearBG.png" alt="Gryffindor"> Gryffindor</button>
-            <button class="filter-btn" data-filter="Slytherin"><img src="https://static.wikia.nocookie.net/harrypotter/images/0/00/Slytherin_ClearBG.png" alt="Slytherin"> Slytherin</button>
-            <button class="filter-btn" data-filter="Ravenclaw"><img src="https://static.wikia.nocookie.net/harrypotter/images/7/71/Ravenclaw_ClearBG.png" alt="Ravenclaw"> Ravenclaw</button>
-            <button class="filter-btn" data-filter="Hufflepuff"><img src="https://static.wikia.nocookie.net/harrypotter/images/0/06/Hufflepuff_ClearBG.png" alt="Hufflepuff"> Hufflepuff</button>
-        </div>
-
-        <!-- Character Card-->
-        <div class="character-grid">
-            
-        </div>
-    </main>
-
-    <!-- Character Detail Box (Modal) hide-->
-    <div id="character-detail-view" class="modal-overlay hidden">
-        <div class="detail-content">
-            
-        </div>
+    <!-- Wishes -->
+    <div class="card" id="wishes" style="display: none;">
+      <div class="line f1" data-text="On your special day, I wish you endless happiness, strong health, and all your dreams coming true. 🎁"></div>
+      <div class="line f2" data-text="May this year bring you more success, joy, and wonderful memories than ever before. 💫"></div>
+      <div class="line f3" data-text="Keep smiling, keep shining, and never stop chasing your dreams. ✨"></div>
+      <div class="line f5" data-text="With love from Stella 🍀"></div>
     </div>
+
+    <div class="hint">Tip: Tap the gift box for a surprise!</div>
+  </div>
+
+  <!-- Floating decorations & particle canvas -->
+  <div class="floaters" id="floaters" aria-hidden="true"></div>
+  <canvas id="fx"></canvas>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const rand = (min, max)=> Math.random()*(max-min)+min;
+  const pick = arr => arr[Math.floor(Math.random()*arr.length)];
+  const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+
+  document.getElementById('backBtn').addEventListener('click', ()=> {
+    if (history.length > 1) history.back();
+  });
+
+  const canvas = document.getElementById('fx');
+  const ctx = canvas.getContext('2d');
+  let W, H, DPR = Math.min(2, window.devicePixelRatio || 1);
+
+  function resize(){
+    W = canvas.width = Math.floor(innerWidth * DPR);
+    H = canvas.height = Math.floor(innerHeight * DPR);
+    canvas.style.width = innerWidth + 'px';
+    canvas.style.height = innerHeight + 'px';
+  }
+  addEventListener('resize', resize);
+  resize();
+
+  const COLORS = ['#ffd166', '#ff74b7', '#8ad7ff', '#b8ff6a', '#ae88ff', '#ffffff'];
+  const particles = [];
+
+  function spawnConfetti(x, y, n=24){
+    for(let i=0;i<n;i++){
+      particles.push({
+        type: Math.random()<0.25 ? 'heart' : 'rect',
+        x:x*DPR, y:y*DPR,
+        vx: rand(-2.2,2.2)*DPR, vy: rand(-3.5,-1.2)*DPR,
+        g: rand(.04,.09)*DPR, s: rand(6,14)*DPR,
+        rot: rand(0,Math.PI*2), vr: rand(-.1,.1),
+        life: 0, max: rand(110,170),
+        color: pick(COLORS)
+      });
+    }
+  }
+
+  function drawHeart(x,y,s,rot,color){
+    ctx.save();
+    ctx.translate(x,y);
+    ctx.rotate(rot);
+    ctx.scale(s/15,s/15);
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(0,5);
+    ctx.bezierCurveTo(0,-5, -15,-5, -15,5);
+    ctx.bezierCurveTo(-15,15, 0,20, 0,28);
+    ctx.bezierCurveTo(0,20, 15,15, 15,5);
+    ctx.bezierCurveTo(15,-5, 0,-5, 0,5);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    const grd = ctx.createRadialGradient(W*0.5,H*0.35,10, W*0.5,H*0.4, Math.max(W,H)*0.7);
+    grd.addColorStop(0,'rgba(94,200,255,0.06)');
+    grd.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle = grd;
+    ctx.fillRect(0,0,W,H);
+
+    for(let i=particles.length-1;i>=0;i--){
+      const p = particles[i];
+      p.life++;
+      p.x += p.vx; p.y += p.vy;
+      p.vy += p.g;
+      p.rot += p.vr;
+      const alpha = 1 - (p.life/p.max);
+      ctx.globalAlpha = clamp(alpha, 0, 1);
+      if(p.type==='rect'){
+        ctx.save();
+        ctx.translate(p.x,p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.s/2, -p.s/2, p.s, p.s*0.6);
+        ctx.restore();
+      }else{
+        drawHeart(p.x,p.y,p.s,p.rot,p.color);
+      }
+      ctx.globalAlpha = 1;
+      if(p.life>p.max || p.y > H+40) particles.splice(i,1);
+    }
+    requestAnimationFrame(loop);
+  }
+  loop();
+
+  const floaters = document.getElementById('floaters');
+  const BALLOONS = ['🎈','🎈','🎊','🎉','🎂','🍰','💖','💝'];
+  function addFloater(){
+    const el = document.createElement('div');
+    el.className = 'floater';
+    el.textContent = pick(BALLOONS);
+    const left = rand(-5, 95);
+    const dur = rand(22, 38);
+    el.style.left = left + 'vw';
+    el.style.setProperty('--dur', dur+'s');
+    el.style.setProperty('--sx', rand(-40,40)+'px');
+    floaters.appendChild(el);
+    setTimeout(()=> el.remove(), dur*1000 + 2000);
+  }
+  setInterval(()=> addFloater(), 1200);
+  for(let i=0;i<8;i++) setTimeout(addFloater, i*500);
+
+  const gift = document.getElementById('gift');
+  const celebrationSound = document.getElementById('celebrationSound');
+
+  function burstText(x,y){
+    const COUNT = 56;
+    for(let i=0;i<COUNT;i++){
+      const t = document.createElement('div');
+      t.className = 'burst';
+      t.textContent = (i%3===0) ? 'Happy Birthday Ko Leon' : pick(['🎉','💖','🎈','🎂','✨','💝','🌟']);
+      t.style.left = x + 'px';
+      t.style.top = y + 'px';
+      t.style.fontSize = (i%3===0) ? (rand(12,22)+'px') : (rand(18,28)+'px');
+      t.style.color = pick(COLORS);
+      document.body.appendChild(t);
+
+      const dx = rand(-260, 260);
+      const dy = rand(-300, -90);
+      const rot = rand(-35,35);
+      const time = rand(1500, 2600);
+
+      t.animate([
+        { transform:`translate(0,0) rotate(0deg)`, opacity:1 },
+        { transform:`translate(${dx}px, ${dy}px) rotate(${rot}deg)`, opacity:0 }
+      ], { duration: time, easing:'cubic-bezier(.2,.7,.2,1)', fill:'forwards' });
+
+      setTimeout(()=> t.remove(), time+60);
+    }
+    for(let k=0;k<3;k++) setTimeout(()=> spawnConfetti(x, y, 64), k*180);
     
-    <!-- "More"Box (Modal) -->
-    <div id="full-story-modal" class="modal-overlay hidden">
-        <div class="full-story-content">
-            <button class="close-story-btn">×</button>
-            <div id="story-details">
-            </div>
-        </div>
-    </div>
+    if (celebrationSound) {
+        celebrationSound.currentTime = 0;
+        celebrationSound.play().catch(e => console.error("Audio play failed:", e));
+    }
+  }
 
-    <!-- Magic Wand Animation-->
-    <div id="magic-animation-overlay" class="hidden">
-        <div class="magic-wand">🪄</div>
-    </div>
+  function startTyping() {
+    const lines = document.querySelectorAll('.line[data-text]');
+    let totalDelay = 0;
+    const typeSpeed = 50;
 
+    lines.forEach((line) => {
+      const text = line.getAttribute('data-text');
+      const lineDelay = text.length * typeSpeed + 500;
+      setTimeout(() => {
+        line.style.opacity = '1';
+        line.classList.add('typing');
+        let i = 0;
+        const interval = setInterval(() => {
+          line.textContent = text.slice(0, i + 1);
+          i++;
+          if (i >= text.length) {
+            clearInterval(interval);
+            line.classList.remove('typing');
+          }
+        }, typeSpeed);
+      }, totalDelay);
+      totalDelay += lineDelay;
+    });
+  }
 
-<!--Footer -->
-    <footer>
+  gift.addEventListener('click', ()=>{
+    const rect = gift.getBoundingClientRect();
+    const cx = rect.left + rect.width/2;
+    const cy = rect.top + rect.height*0.35;
+    
+    gift.querySelector('.lid').animate([
+      { transform:'rotateX(0deg) translateY(0)' },
+      { transform:'rotateX(32deg) translateY(-8px)' },
+      { transform:'rotateX(0deg) translateY(0)' }
+    ], { duration: 620, easing:'cubic-bezier(.2,.7,.2,1)' });
+    
+    burstText(cx, cy);
 
-        <!-- Disclaimer-->
-        <div class="disclaimer">
-            <p>Disclaimer: This is a non-commercial fan project created for educational and demonstration purposes only. All characters, names, and related indicia are trademarks of and © Warner Bros. Entertainment Inc., J.K. Rowling, and their respective owners.</p>
-        </div>
+    const wishesCard = document.getElementById('wishes');
+    const giftHint = document.querySelector('.hint');
 
-        <span>© 2025 Stella. All rights reserved.</span>
-    </footer>
+    // Fade out the gift box and hint
+    gift.style.opacity = '0';
+    gift.style.transform = 'scale(0.8)';
+    giftHint.style.opacity = '0';
 
-    <!-- JavaScript-->
-    <script src="Script.js"></script>
+    setTimeout(() => {
+      wishesCard.style.display = 'block';
+      startTyping();
+      // To ensure they don't take up space after hiding
+      gift.style.display = 'none'; 
+      giftHint.style.display = 'none';
+    }, 500); // Wait for fade out animation
+  }, { once: true }); // Make the gift clickable only once
+
+  // Initial auto-burst for flair on page load
+  setTimeout(()=>{
+    const hint = document.querySelector('.hint');
+    if(hint.style.display !== 'none'){ // only burst if gift hasn't been clicked
+        burstText(innerWidth*0.5, innerHeight*0.38);
+        for(let i=0;i<4;i++) setTimeout(()=> spawnConfetti(innerWidth*0.5, innerHeight*0.4, 48), i*240);
+    }
+  }, 900);
+
+});
+</script>
 </body>
+
 </html>
